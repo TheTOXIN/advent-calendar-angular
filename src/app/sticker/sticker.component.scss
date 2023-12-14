@@ -1,0 +1,69 @@
+:host {
+  height: 100%;
+  width: 100%;
+
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+
+.sticker {
+  border-radius: 100%;
+  cursor: pointer;
+
+  aspect-ratio : 1 / 1;
+  height: 100%;
+
+  filter: drop-shadow(0rem 0rem 0.25rem #313131);
+  transition: all .2s ease-in-out;
+}
+
+.sticker:hover {
+  filter: drop-shadow(0rem 0rem 0.3rem #1a1a1a);
+  transform: scale(1.05);
+}
+
+.sticker-video {
+  video {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    position: absolute;
+    display: flex;
+  }
+  z-index: 1;
+}
+
+.sticker-video-btn {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sticker-video-play {
+  width: 30%;
+  height: 30%;
+  filter: drop-shadow(0rem 0rem 0.25rem #313131);
+}
+
+.sticker-circle {
+  border-radius: 50%;
+
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  right: 0;
+
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+
+  z-index: 3;
+}
