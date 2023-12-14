@@ -13,7 +13,7 @@ import {Animate} from "../Animate";
 export class StickerComponent {
 
   @Input()
-  public sticker: Sticker = new Sticker(0, "", "", "", "");
+  public sticker: Sticker = new Sticker(0, "", "", "");
 
   @ViewChild("videoPlayer", {static: false}) videoPlayer?: ElementRef;
 
@@ -43,8 +43,12 @@ export class StickerComponent {
   }
 
   peelOff() {
-    this.animatePeel = this.getRandomAnimatePeel();
+    if (this.peeled) {
+      return;
+    }
+
     this.peeled = !this.peeled
+    this.animatePeel = this.getRandomAnimatePeel();
   }
 
   getRandomAnimatePeel() {

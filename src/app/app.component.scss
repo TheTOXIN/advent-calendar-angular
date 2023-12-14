@@ -2,13 +2,14 @@
   font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
   Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
   "Segoe UI Symbol";
-  height: 100vh;
-  width: 100vw;
+  height: 100%;
+  width: 100%;
   left: 0;
   top: 0;
   position: fixed;
   display: flex;
   flex-direction: column;
+  user-select: none;
 
   background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
   background-size: 400% 400%;
@@ -52,6 +53,7 @@
 }
 
 .sticker {
+  user-select: none;
   flex: 1 1 250px;
   display: flex;
   text-align: center;
@@ -83,14 +85,14 @@
 
   .author {
     position: absolute;
-    left: 10px;
+    left: 15px;
     font-size: 20px;
     filter: drop-shadow(0rem 0rem 0.25rem #313131);
   }
 
   .year {
     position: absolute;
-    right: 10px;
+    right: 15px;
     font-size: 20px;
     filter: drop-shadow(0rem 0rem 0.25rem #313131);
   }
@@ -111,24 +113,66 @@
   }
 }
 
-@media(max-width: 500px) {
+@media(max-width: 1200px) {
   .sticker {
     flex: 1 1 200px;
+  }
+}
+
+
+@media(max-width: 900px) {
+  .sticker {
+    flex: 1 1 150px;
+  }
+  .title {
+    font-size: 24px;
+  }
+}
+
+@media(max-width: 700px) {
+  .sticker {
+    flex: 1 1 120px;
+  }
+  .title {
+    font-size: 20px;
+  }
+}
+
+@media(max-width: 500px) {
+  .sticker {
+    flex: 1 1 110px;
   }
   .title {
     font-size: 18px;
   }
+}
+
+@media(max-width: 405px) {
+  .calendar {
+    padding: 3px;
+  }
+  .sticker {
+    flex: 1 1 100px;
+    padding-bottom: 3px;
+    padding-top: 3px;
+  }
+  .title {
+    font-size: 16px;
+    padding-top: 3px;
+  }
   .footer {
+    padding-bottom: 3px;
+
     .rand {
       font-size: 20px;
     }
 
     .author {
-      font-size: 16px;
+      font-size: 14px;
     }
 
     .year {
-      font-size: 16px;
+      font-size: 14px;
     }
   }
 }

@@ -8,14 +8,14 @@
       </svg>
     </div>
     <video #videoPlayer>
-      <source src="assets/advent_video_16.webm" type="video/webm">
+      <source src="{{sticker.videoSrc}}" type="video/webm">
     </video>
   </div>
 
   <div class="sticker-circle animate__animated"
        (click)="peelOff()"
        [ngClass]="animatePeel"
-       [ngStyle]="{'color': sticker.textColor, 'background': sticker.backColor}"
+       [ngStyle]="{'background': sticker.backColor}"
        [style.z-index]="peeled ? 666 : ''">
     <div>{{sticker.dayTitle}}</div>
   </div>

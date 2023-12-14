@@ -6,6 +6,7 @@
   text-align: center;
   align-items: center;
   justify-content: center;
+  user-select: none;
 }
 
 .sticker {
@@ -16,26 +17,26 @@
   height: 100%;
 
   filter: drop-shadow(0rem 0rem 0.25rem #313131);
-  transition: all .2s ease-in-out;
-}
 
-.sticker:hover {
-  filter: drop-shadow(0rem 0rem 0.3rem #1a1a1a);
-  transform: scale(1.05);
+  user-select: none;
 }
 
 .sticker-video {
+  user-select: none;
   video {
     width: 100%;
     height: 100%;
     border-radius: 50%;
     position: absolute;
     display: flex;
+    user-select: none;
   }
   z-index: 1;
 }
 
 .sticker-video-btn {
+  user-select: none;
+
   width: 100%;
   height: 100%;
   position: absolute;
@@ -46,12 +47,17 @@
 }
 
 .sticker-video-play {
+  user-select: none;
   width: 30%;
   height: 30%;
   filter: drop-shadow(0rem 0rem 0.25rem #313131);
 }
 
 .sticker-circle {
+  transition: all .2s ease-in-out;
+
+  user-select: none;
+
   border-radius: 50%;
 
   width: 100%;
@@ -65,5 +71,27 @@
   align-items: center;
   justify-content: center;
 
+  div {
+    user-select: none;
+    color: white;
+    filter: drop-shadow(0rem 0rem 0.5rem #444444);
+    font-size: 20px;
+  }
+
   z-index: 3;
+}
+
+.sticker-circle:hover {
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  user-select: none;
+  filter: drop-shadow(0rem 0rem 0.15rem #525252);
+  transform: scale(1.05);
+}
+
+@media(max-width: 450px) {
+  .sticker-circle {
+    div {
+      font-size: 14px;
+    }
+  }
 }

@@ -3,8 +3,7 @@ export class Sticker {
     public dayNumber: number,
     public dayTitle: string,
     public backColor: string,
-    public textColor: string,
-    public imageSrc: string
+    public videoSrc: string
   ) {
   }
 }
