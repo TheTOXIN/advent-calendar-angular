@@ -1,8 +1,11 @@
+
 <div class="main">
-  <div class="title animate__animated animate__tada">{{title}}</div>
+  <div class="title animate__animated" [ngClass]="{'animate__tada': isLoaded}">
+    {{title}}
+  </div>
   <div class="calendar">
     <div class="sticker" *ngFor="let sticker of stickers">
-      <app-sticker #stickers [sticker]="sticker"/>
+      <app-sticker #stickers [sticker]="sticker" (loadEvent)="loadTrigger($event)"/>
     </div>
   </div>
   <div class="footer">
@@ -10,9 +13,13 @@
     <div class="rand" (click)="randomStick()">🎲</div>
     <div class="year">{{year}}г</div>
   </div>
+  <div class="loader" *ngIf="!isLoaded">
+    <div class="loader-circle"></div>
+    <div class="loader-text">ЗАГРУЗКА: {{loadCounter}} / {{daysCount}}</div>
+  </div>
 </div>
 
-<div class="snow-container">
+<div class="snow-container" *ngIf="isLoaded">
   <div class="snow foreground"></div>
   <div class="snow foreground layered"></div>
   <div class="snow middleground"></div>

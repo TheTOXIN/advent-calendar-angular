@@ -1,4 +1,4 @@
-import {Component, ElementRef, Input, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, EventEmitter, Input, Output, ViewChild} from '@angular/core';
 import {Sticker} from "./Sticker";
 import {CommonModule} from '@angular/common';
 import {Animate} from "../Animate";
@@ -10,10 +10,12 @@ import {Animate} from "../Animate";
   templateUrl: './sticker.component.html',
   styleUrl: './sticker.component.scss'
 })
-export class StickerComponent {
+export class StickerComponent implements AfterViewInit {
 
   @Input()
   public sticker: Sticker = new Sticker(0, "", "", "");
+
+  @Output() loadEvent = new EventEmitter<void>();
 
   @ViewChild("videoPlayer", {static: false}) videoPlayer?: ElementRef;
 
@@ -27,6 +29,13 @@ export class StickerComponent {
 
   }
 
+  ngAfterViewInit(): void {
+    this.videoPlayer?.nativeElement.addEventListener("ended", () => this.paused = true);
+    this.videoPlayer?.nativeElement.addEventListener("pause", () => this.paused = true);
+
+    this.videoPlayer?.nativeElement.addEventListener('loadeddata', () => this.loadEvent.emit());
+  }
+
   toggleVideo() {
     this.paused = false;
 
@@ -36,10 +45,11 @@ export class StickerComponent {
       this.videoPlayer?.nativeElement.requestFullscreen();
     }
 
-    this.videoPlayer?.nativeElement.addEventListener("ended", () => this.paused = true);
-    this.videoPlayer?.nativeElement.addEventListener("pause", () => this.paused = true);
-
     this.played = !this.played;
+  }
+
+  loadVideo() {
+    this.videoPlayer?.nativeElement.load();
   }
 
   peelOff() {
