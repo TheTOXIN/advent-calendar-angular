@@ -5,6 +5,6 @@ export const routes: Routes = [
   {
     path: '',
     component: AppComponent,
-    title: 'ПУКИШ 🎁'
+    title: 'ПУКИШ'
   }
 ];
