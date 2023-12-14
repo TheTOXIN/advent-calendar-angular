@@ -4,11 +4,12 @@ import {RouterOutlet} from '@angular/router';
 import {Sticker} from "./sticker/Sticker";
 import {StickerComponent} from "./sticker/sticker.component";
 import {Videos} from "./Videos";
+import {SnowComponent} from "./snow/snow.component";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, StickerComponent],
+  imports: [CommonModule, RouterOutlet, StickerComponent, SnowComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })

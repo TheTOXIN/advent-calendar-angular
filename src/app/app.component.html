@@ -19,11 +19,4 @@
   </div>
 </div>
 
-<div class="snow-container" *ngIf="isLoaded">
-  <div class="snow foreground"></div>
-  <div class="snow foreground layered"></div>
-  <div class="snow middleground"></div>
-  <div class="snow middleground layered"></div>
-  <div class="snow background"></div>
-  <div class="snow background layered"></div>
-</div>
+<app-snow *ngIf="isLoaded"></app-snow>
