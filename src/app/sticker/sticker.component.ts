@@ -13,7 +13,7 @@ import {Animate} from "../Animate";
 export class StickerComponent implements AfterViewInit {
 
   @Input()
-  public sticker: Sticker = new Sticker(0, "", "", "");
+  public sticker: Sticker = new Sticker(0, "", "", "", false);
 
   @Output() loadEvent = new EventEmitter<void>();
 
@@ -34,6 +34,10 @@ export class StickerComponent implements AfterViewInit {
     this.videoPlayer?.nativeElement.addEventListener("pause", () => this.paused = true);
 
     this.videoPlayer?.nativeElement.addEventListener('loadeddata', () => this.loadEvent.emit());
+
+    if (this.sticker.videoSrc.length == 0) {
+      this.loadEvent.emit();
+    }
   }
 
   toggleVideo() {
@@ -53,7 +57,7 @@ export class StickerComponent implements AfterViewInit {
   }
 
   peelOff() {
-    if (this.peeled) {
+    if (this.peeled || this.sticker.locked) {
       return;
     }
 

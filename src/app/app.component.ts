@@ -29,7 +29,8 @@ export class AppComponent implements AfterViewInit {
   isLoaded = false;
   loadCounter = 0;
 
-  daysCount = AppComponent.DAYS_COUNT;
+  readonly daysCount = AppComponent.DAYS_COUNT;
+  readonly decemberMonth = 12;
 
   ngAfterViewInit(): void {
 
@@ -39,23 +40,35 @@ export class AppComponent implements AfterViewInit {
     for (let i = 0; i < AppComponent.DAYS_COUNT; i++) {
       let dayNumber: number = i + 1;
 
-      let backColor1 = this.getRandomColor();
-      let backColor2 = this.getRandomColor();
-
       let videoUrl = Videos.videosLinks[i];
 
       if (videoUrl.length == 0) {
         videoUrl = Videos.videoDefault;
       }
 
-      this.stickers.push(new Sticker(
-        dayNumber,
-        'ДЕНЬ ' + (AppComponent.DAYS_COUNT_MONTHS - (AppComponent.DAYS_COUNT - dayNumber)),
-        'linear-gradient(-45deg, ' + backColor1 + ', ' + backColor2 + ' )',
-        videoUrl
-      ));
+      let dayStick = AppComponent.DAYS_COUNT_MONTHS - (AppComponent.DAYS_COUNT - dayNumber);
+      let stickLocked = dayStick > new Date().getDate() && new Date().getMonth() == this.decemberMonth - 1;
 
-      this.stickersOpened.push(i);
+      if (stickLocked) {
+        videoUrl = "";
+      }
+
+      let backColor1 = stickLocked ? '#797979' : this.getRandomColor();
+      let backColor2 = stickLocked ? '#333333' : this.getRandomColor();
+
+      let sticker = new Sticker(
+        dayNumber,
+        'ДЕНЬ ' + dayStick,
+        'linear-gradient(-45deg, ' + backColor1 + ', ' + backColor2 + ' )',
+        videoUrl,
+        stickLocked
+      );
+
+      this.stickers.push(sticker);
+
+      if (!stickLocked) {
+        this.stickersOpened.push(i);
+      }
     }
   }
 

@@ -53,6 +53,8 @@
 
 .sticker {
   user-select: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+
   flex: 1 1 250px;
   display: flex;
   text-align: center;
@@ -151,9 +153,15 @@
   }
 }
 
-@media(max-width: 1200px) {
+@media(max-width: 1500px) {
   .sticker {
     flex: 1 1 200px;
+  }
+}
+
+@media(max-width: 1200px) {
+  .sticker {
+    flex: 1 1 180px;
   }
 }
 

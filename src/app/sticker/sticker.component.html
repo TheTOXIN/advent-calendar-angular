@@ -7,7 +7,7 @@
         <path d="M3 3 L3 25 L23 14 z" stroke="white" stroke-width="3" fill="white"/>
       </svg>
     </div>
-    <video #videoPlayer>
+    <video #videoPlayer *ngIf="!sticker.locked">
       <source src="{{sticker.videoSrc}}" type="video/webm">
     </video>
   </div>
@@ -17,7 +17,8 @@
        [ngClass]="animatePeel"
        [ngStyle]="{'background': sticker.backColor}"
        [style.z-index]="peeled ? 666 : ''">
-    <div>{{sticker.dayTitle}}</div>
+    <div *ngIf="!sticker.locked">{{sticker.dayTitle}}</div>
+    <div *ngIf="sticker.locked">🔒</div>
   </div>
 
 </div>

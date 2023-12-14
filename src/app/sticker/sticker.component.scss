@@ -1,6 +1,7 @@
 :host {
   height: 100%;
   width: 100%;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 
   display: flex;
   text-align: center;
@@ -10,6 +11,8 @@
 }
 
 .sticker {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+
   border-radius: 100%;
   cursor: pointer;
 
@@ -23,6 +26,7 @@
 
 .sticker-video {
   user-select: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 
   video {
     width: 100%;
@@ -39,6 +43,7 @@
 .sticker-video-btn {
   border-radius: 50%;
   user-select: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 
   width: 100%;
   height: 100%;
@@ -52,6 +57,8 @@
 
 .sticker-video-play {
   user-select: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+
   width: 30%;
   height: 30%;
   filter: drop-shadow(0rem 0rem 0.25rem #313131);
@@ -59,6 +66,7 @@
 
 .sticker-circle {
   transition: all .2s ease-in-out;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 
   user-select: none;
 
