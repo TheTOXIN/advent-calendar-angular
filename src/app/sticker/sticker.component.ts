@@ -35,9 +35,7 @@ export class StickerComponent implements AfterViewInit {
       this.fullScreen = false;
     });
 
-    this.videoPlayer?.nativeElement.addEventListener("pause", () => this.played = false);
     this.videoPlayer?.nativeElement.addEventListener("play", () => this.played = true);
-
     this.videoPlayer?.nativeElement.addEventListener('loadeddata', () => this.loadEvent.emit());
 
     if (this.sticker.videoSrc.length == 0) {
@@ -51,7 +49,7 @@ export class StickerComponent implements AfterViewInit {
 
   showSticker() {
     this.peelOff();
-    this.toggleVideo();
+    this.playVideo();
   }
 
   peelOff() {
@@ -68,11 +66,11 @@ export class StickerComponent implements AfterViewInit {
       return;
     }
 
-    if (this.played) {
-      this.fullScreen = !this.fullScreen;
-    } else {
+    if (!this.played) {
       this.playVideo();
     }
+
+    this.fullScreen = !this.fullScreen;
   }
 
   playVideo() {
