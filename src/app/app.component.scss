@@ -204,6 +204,15 @@
   }
 }
 
+@media(max-width: 360px) {
+  .sticker {
+    flex: 1 1 90px;
+  }
+  .title {
+    font-size: 12px;
+  }
+}
+
 .shake {
   animation: shake 0.5s;
   animation-iteration-count: 1;

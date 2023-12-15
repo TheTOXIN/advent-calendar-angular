@@ -15,10 +15,11 @@
   background: linear-gradient(-45deg, #131313, #262626);
   text-align: center;
   color: whitesmoke;
+
   div {
     user-select: none;
     cursor: pointer;
-    filter: drop-shadow(0rem 0rem 0.25rem #4b4b4b);
+    filter: drop-shadow(0rem 0rem 1rem #626262);
   }
 }
 

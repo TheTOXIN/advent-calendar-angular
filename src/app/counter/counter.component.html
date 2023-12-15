@@ -1,4 +1,4 @@
 <div class="counter" >
-  <div *ngIf="isNewYear" class="animate__animated animate__tada">УРА НОВЫЙ ГОД 🎉</div>
-  <div *ngIf="!isNewYear">⏰ ДО НГ {{nextYear}} ОСТАЛОСЬ: <br/>{{timerText}}</div>
+  <div *ngIf="isNewYear" class="animate__animated animate__tada" (click)="shoot()">УРА НОВЫЙ ГОД 🎉</div>
+  <div *ngIf="!isNewYear" (click)="shoot()">⏰ ДО НГ {{nextYear}} ОСТАЛОСЬ: <br/>{{timerText}}</div>
 </div>

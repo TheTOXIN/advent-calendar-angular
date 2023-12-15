@@ -41,29 +41,46 @@ export class AppComponent implements AfterViewInit {
   readonly daysCount = AppComponent.DAYS_COUNT;
   readonly decemberMonth = 12;
 
+  private date: Date;
+
   ngAfterViewInit(): void {
 
   }
 
   constructor(private router: Router) {
-    let date = new Date();
+    this.date = new Date();
 
-    if (date.getMonth() <= 0 && date.getDate() <= 1) {
+    if (this.date.getMonth() <= 0 && this.date.getDate() <= 1) {
       this.showCounter();
       return;
     }
 
-    let nextYear = date.getFullYear() + 1;
-    let endDate: any = new Date(nextYear, 0, 1, 0, 0, 0, 0);
-    let timer = (endDate as any) - (date as any);
-    let daysLeft = Math.floor(timer / (1000 * 60 * 60 * 24));
-
-    this.newYearCounter = 'до ' + nextYear + 'г ' + daysLeft + 'д';
+    this.initCounter();
 
     this.loadTextAll = Data.loadText;
     this.loadText = this.loadTextAll[Math.floor(Math.random() * this.loadTextAll.length)];
 
     this.initStickers();
+  }
+
+  private initCounter() {
+    let nextYear = this.date.getFullYear() + 1;
+    let endDate: any = new Date(nextYear, 0, 1, 0, 0, 0, 0);
+    let timer = (endDate as any) - (this.date as any);
+
+    let daysLeft = Math.floor(timer / (1000 * 60 * 60 * 24));
+    let daysLastDigit = daysLeft % 10;
+    let daysNaming;
+
+    if (daysLastDigit == 1) {
+      daysNaming = "день";
+    } else if (daysLastDigit >= 2 && daysLastDigit <= 4) {
+      daysNaming = "дня";
+    } else {
+      daysNaming = "дней";
+    }
+
+    this.newYearCounter = daysLeft + ' ' + daysNaming + ' до ' + nextYear % 100 + 'г';
   }
 
   private initStickers() {
