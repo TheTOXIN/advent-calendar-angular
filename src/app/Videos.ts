@@ -1,22 +1,24 @@
 export class Videos {
 
+  static readonly sourceUrl = "https://firebasestorage.googleapis.com";
+
   static readonly videoDefault =
-    "https://firebasestorage.googleapis.com/v0/b/advent-calendar-85c61.appspot.com/o/default.webm?alt=media&token=0e0d8d37-1132-4c36-b4b0-668802fc6fa3"
+    "/v0/b/advent-calendar-4a616.appspot.com/o/default.webm?alt=media&token=7d192e6e-e198-4687-ade7-49eb36d22466"
 
   static readonly videosLinks = [
-    /* 8*/"https://firebasestorage.googleapis.com/v0/b/advent-calendar-85c61.appspot.com/o/24.webm?alt=media&token=8069d881-4f7a-4fc2-aa70-46f0c8fd940d",
-    /* 9*/"https://firebasestorage.googleapis.com/v0/b/advent-calendar-85c61.appspot.com/o/23.webm?alt=media&token=f0752ca2-edf2-4109-a52d-9a64bec1432c",
-    /*10*/"https://firebasestorage.googleapis.com/v0/b/advent-calendar-85c61.appspot.com/o/22.webm?alt=media&token=734186b7-8989-48f0-8e16-75097fda6c6d",
-    /*11*/"https://firebasestorage.googleapis.com/v0/b/advent-calendar-85c61.appspot.com/o/21.webm?alt=media&token=c58efe00-c5c8-450c-9ee0-775328c584d9",
-    /*12*/"https://firebasestorage.googleapis.com/v0/b/advent-calendar-85c61.appspot.com/o/12.webm?alt=media&token=b680e1f3-b5c5-4390-ab72-defa888d0a7e",
-    /*13*/"https://firebasestorage.googleapis.com/v0/b/advent-calendar-85c61.appspot.com/o/19.webm?alt=media&token=cc434e04-cc54-46c0-b01b-aef769ea2fc7",
-    /*14*/"https://firebasestorage.googleapis.com/v0/b/advent-calendar-85c61.appspot.com/o/17.webm?alt=media&token=d1c4fdd5-256a-4297-8347-cae1a951dfe8",
-    /*15*/"https://firebasestorage.googleapis.com/v0/b/advent-calendar-85c61.appspot.com/o/14.webm?alt=media&token=f1e25891-e1ba-4c04-9077-e6f76ccc9b3b",
-    /*16*/"https://firebasestorage.googleapis.com/v0/b/advent-calendar-85c61.appspot.com/o/16.webm?alt=media&token=31d2ed3f-2bbb-4185-9a4d-32b1c49368ef",
+    /* 8*/"/v0/b/advent-calendar-4a616.appspot.com/o/sticker_8.webm?alt=media&token=94019d8d-c8c4-401f-9a22-54389e4335af",
+    /* 9*/"/v0/b/advent-calendar-4a616.appspot.com/o/sticker_9.webm?alt=media&token=033544d1-5680-45dd-94a8-aa7b0a935cff",
+    /*10*/"/v0/b/advent-calendar-4a616.appspot.com/o/sticker_10.webm?alt=media&token=ac625a4c-0b57-44c5-996d-d9b0e30c44d6",
+    /*11*/"/v0/b/advent-calendar-4a616.appspot.com/o/sticker_11.webm?alt=media&token=9a391f49-1d95-4685-b90b-df2bf728ef5b",
+    /*12*/"/v0/b/advent-calendar-4a616.appspot.com/o/sticker_12.webm?alt=media&token=319d675f-8811-45b7-bb02-3575c14e4c95",
+    /*13*/"/v0/b/advent-calendar-4a616.appspot.com/o/sticker_13.webm?alt=media&token=092df2f7-4b3b-4d46-b5d0-3991775f537e",
+    /*14*/"/v0/b/advent-calendar-4a616.appspot.com/o/sticker_14.webm?alt=media&token=82fffc04-748e-4b3e-a019-3a526e5df01f",
+    /*15*/"/v0/b/advent-calendar-4a616.appspot.com/o/sticker_15.webm?alt=media&token=c4192fb9-6354-4d3c-bdc0-fb6672f43f9d",
+    /*16*/"/v0/b/advent-calendar-4a616.appspot.com/o/sticker_16.webm?alt=media&token=5e1fa409-8984-40a8-af99-2dbac1a07587",
     /*17*/"",
-    /*18*/"https://firebasestorage.googleapis.com/v0/b/advent-calendar-85c61.appspot.com/o/18.webm?alt=media&token=0ea822ec-cc77-4504-b048-827106807641",
+    /*18*/"/v0/b/advent-calendar-4a616.appspot.com/o/sticker_18.webm?alt=media&token=dec94ec3-2f26-4b08-a968-51242ffaaf1b",
     /*19*/"",
-    /*20*/"https://firebasestorage.googleapis.com/v0/b/advent-calendar-85c61.appspot.com/o/20.webm?alt=media&token=d27f7d07-a5be-43c3-96ba-426f9ef737de ",
+    /*20*/"/v0/b/advent-calendar-4a616.appspot.com/o/sticker_20.webm?alt=media&token=f5556dcc-592f-4a7f-8ea5-6d20813ef9d4",
     /*21*/"",
     /*22*/"",
     /*23*/"",

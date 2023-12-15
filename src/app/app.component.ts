@@ -8,7 +8,7 @@ import {SnowComponent} from "./snow/snow.component";
 import {Data} from "./Data";
 import {CounterComponent} from "./counter/counter.component";
 
-//TODO БРАТЬ ДАТУ ИЗ СЕРВЕРА ЧТОБЫ НЕ ХАКНУЛИ
+//TODO БРАТЬ ДАТУ ИЗ СЕРВЕРА ЧТОБЫ НЕ ХАКНУЛИ + FIRBASE
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -87,10 +87,10 @@ export class AppComponent implements AfterViewInit {
     for (let i = 0; i < AppComponent.DAYS_COUNT; i++) {
       let dayNumber: number = i + 1;
 
-      let videoUrl = Videos.videosLinks[i];
+      let videoUrl = Videos.sourceUrl + Videos.videosLinks[i];
 
       if (videoUrl.length == 0) {
-        videoUrl = Videos.videoDefault;
+        videoUrl = Videos.sourceUrl + Videos.videoDefault;
       }
 
       let dayStick = AppComponent.DAYS_COUNT_MONTHS - (AppComponent.DAYS_COUNT - dayNumber);
