@@ -1,7 +1,7 @@
 <div class="sticker" [ngClass]="{'sticker-full':fullScreen}">
 
-  <div class="sticker-video">
-    <video #videoPlayer *ngIf="!sticker.locked" (click)="toggleVideo()">
+  <div class="sticker-video" (click)="toggleVideo()">
+    <video #videoPlayer *ngIf="!sticker.locked">
       <source src="{{sticker.videoSrc}}" type="video/webm">
     </video>
   </div>

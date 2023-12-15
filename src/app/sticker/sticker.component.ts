@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, ElementRef, EventEmitter, Input, Output, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, EventEmitter, Input, Output, ViewChild} from '@angular/core';
 import {Sticker} from "./Sticker";
 import {CommonModule} from '@angular/common';
 import {Animate} from "../Animate";
@@ -64,6 +64,10 @@ export class StickerComponent implements AfterViewInit {
   }
 
   toggleVideo() {
+    if (!this.peeled) {
+      return;
+    }
+
     if (this.played) {
       this.fullScreen = !this.fullScreen;
     } else {

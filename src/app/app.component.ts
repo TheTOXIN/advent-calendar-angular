@@ -1,6 +1,6 @@
 import {AfterViewInit, Component, QueryList, ViewChildren} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {RouterOutlet} from '@angular/router';
+import {Router, RouterOutlet} from '@angular/router';
 import {Sticker} from "./sticker/Sticker";
 import {StickerComponent} from "./sticker/sticker.component";
 import {Videos} from "./Videos";
@@ -45,11 +45,11 @@ export class AppComponent implements AfterViewInit {
 
   }
 
-  constructor() {
+  constructor(private router: Router) {
     let date = new Date();
 
     if (date.getMonth() <= 0 && date.getDate() <= 1) {
-      this.isCounter = true;
+      this.showCounter();
       return;
     }
 
@@ -135,6 +135,7 @@ export class AppComponent implements AfterViewInit {
 
   showCounter() {
     this.isCounter = true;
+    this.router.navigate(["/counter"]);
   }
 
   toAuthor() {
