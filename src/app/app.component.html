@@ -1,4 +1,3 @@
-
 <div class="main">
   <div class="title animate__animated" [ngClass]="{'animate__tada': isLoaded}">
     {{title}}
@@ -9,14 +8,15 @@
     </div>
   </div>
   <div class="footer">
-    <div class="author">&#64;TheToxin</div>
-    <div class="rand" (click)="randomStick()">🎲</div>
-    <div class="year">{{year}}г</div>
+    <div class="author" (click)="toAuthor()">&#64;TheToxin</div>
+    <div class="rand" (click)="randomStick()" [ngClass]="{'shake': shakeAnim}">🎲</div>
+    <div class="year" (click)="showCounter()">{{newYearCounter}}</div>
   </div>
   <div class="loader" *ngIf="!isLoaded">
     <div class="loader-circle"></div>
-    <div class="loader-text">ЗАГРУЗКА: {{loadCounter}} / {{daysCount}}</div>
+    <div class="loader-text">{{loadText}}: {{loadCounter}} / {{daysCount}}</div>
   </div>
 </div>
 
-<app-snow *ngIf="isLoaded"></app-snow>
+<app-counter *ngIf="isCounter"></app-counter>
+<app-snow *ngIf="isLoaded && !isCounter"></app-snow>

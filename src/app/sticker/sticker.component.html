@@ -1,24 +1,18 @@
-<div class="sticker">
+<div class="sticker" [ngClass]="{'sticker-full':fullScreen}">
 
   <div class="sticker-video">
-    <div class="sticker-video-btn" (click)="toggleVideo()">
-      <svg class="sticker-video-play" *ngIf="paused" xmlns="http://www.w3.org/2000/svg"
-           viewBox="0 0 25 30">
-        <path d="M3 3 L3 25 L23 14 z" stroke="white" stroke-width="3" fill="white"/>
-      </svg>
-    </div>
-    <video #videoPlayer *ngIf="!sticker.locked">
+    <video #videoPlayer *ngIf="!sticker.locked" (click)="toggleVideo()">
       <source src="{{sticker.videoSrc}}" type="video/webm">
     </video>
   </div>
 
   <div class="sticker-circle animate__animated"
-       (click)="peelOff()"
+       (click)="showSticker()"
        [ngClass]="animatePeel"
        [ngStyle]="{'background': sticker.backColor}"
        [style.z-index]="peeled ? 666 : ''">
-    <div *ngIf="!sticker.locked">{{sticker.dayTitle}}</div>
-    <div *ngIf="sticker.locked">🔒</div>
+    <div class="sticker-title" *ngIf="!sticker.locked">{{sticker.dayTitle}}</div>
+    <div class="sticker-locked" *ngIf="sticker.locked">🔒</div>
   </div>
 
 </div>

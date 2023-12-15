@@ -17,21 +17,26 @@ export class StickerComponent implements AfterViewInit {
 
   @Output() loadEvent = new EventEmitter<void>();
 
-  @ViewChild("videoPlayer", {static: false}) videoPlayer?: ElementRef;
+  @ViewChild("videoPlayer", {static: false}) videoPlayer: any;
 
   public peeled = false
-  public paused = true;
   public played = false;
 
-  animatePeel = "";
+  public fullScreen = false;
+  public animatePeel = "";
 
   constructor() {
 
   }
 
   ngAfterViewInit(): void {
-    this.videoPlayer?.nativeElement.addEventListener("ended", () => this.paused = true);
-    this.videoPlayer?.nativeElement.addEventListener("pause", () => this.paused = true);
+    this.videoPlayer?.nativeElement.addEventListener("ended", () => {
+      this.played = false;
+      this.fullScreen = false;
+    });
+
+    this.videoPlayer?.nativeElement.addEventListener("pause", () => this.played = false);
+    this.videoPlayer?.nativeElement.addEventListener("play", () => this.played = true);
 
     this.videoPlayer?.nativeElement.addEventListener('loadeddata', () => this.loadEvent.emit());
 
@@ -40,20 +45,13 @@ export class StickerComponent implements AfterViewInit {
     }
   }
 
-  toggleVideo() {
-    this.paused = false;
-
-    if (!this.played) {
-      this.videoPlayer?.nativeElement.play();
-    } else {
-      this.videoPlayer?.nativeElement.requestFullscreen();
-    }
-
-    this.played = !this.played;
-  }
-
   loadVideo() {
     this.videoPlayer?.nativeElement.load();
+  }
+
+  showSticker() {
+    this.peelOff();
+    this.toggleVideo();
   }
 
   peelOff() {
@@ -63,6 +61,23 @@ export class StickerComponent implements AfterViewInit {
 
     this.peeled = !this.peeled
     this.animatePeel = this.getRandomAnimatePeel();
+  }
+
+  toggleVideo() {
+    if (this.played) {
+      this.fullScreen = !this.fullScreen;
+    } else {
+      this.playVideo();
+    }
+  }
+
+  playVideo() {
+    if (this.played) {
+      this.videoPlayer.nativeElement.currentTime = 0;
+    }
+
+    this.videoPlayer?.nativeElement.play();
+    this.played = true;
   }
 
   getRandomAnimatePeel() {

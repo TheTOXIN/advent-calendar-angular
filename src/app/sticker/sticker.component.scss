@@ -13,7 +13,6 @@
 .sticker {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 
-  border-radius: 100%;
   cursor: pointer;
 
   aspect-ratio: 1 / 1;
@@ -22,46 +21,61 @@
   filter: drop-shadow(0rem 0rem 0.25rem #313131);
 
   user-select: none;
+
+  transition: all 0.25s ease;
+  .sticker-video {
+    transition: all 0.25s ease;
+    video {
+      transition: all 0.25s ease;
+    }
+  }
+}
+
+.sticker-full {
+  z-index: 9999;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  backdrop-filter: blur(10px);
+
+  .sticker-video {
+    video {
+      max-width: fit-content;
+      max-height: -webkit-fill-available;
+      aspect-ratio: 1 / 1;
+      height: fit-content;
+    }
+  }
 }
 
 .sticker-video {
   user-select: none;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 
-  video {
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    position: absolute;
-    display: flex;
-    user-select: none;
-  }
-
-  z-index: 1;
-}
-
-.sticker-video-btn {
-  border-radius: 50%;
-  user-select: none;
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-
   width: 100%;
   height: 100%;
   position: absolute;
-  z-index: 2;
 
   display: flex;
-  align-items: center;
   justify-content: center;
-}
+  align-items: center;
 
-.sticker-video-play {
-  user-select: none;
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  video {
+    width: 98%;
+    height: 98%;
 
-  width: 30%;
-  height: 30%;
-  filter: drop-shadow(0rem 0rem 0.25rem #313131);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 100%;
+    user-select: none;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  }
+
+  z-index: 1;
 }
 
 .sticker-circle {
@@ -83,13 +97,6 @@
   align-items: center;
   justify-content: center;
 
-  div {
-    user-select: none;
-    color: white;
-    filter: drop-shadow(0rem 0rem 0.5rem #444444);
-    font-size: 20px;
-  }
-
   z-index: 3;
 }
 
@@ -100,11 +107,41 @@
   transform: scale(1.05);
 }
 
+.sticker-title {
+  user-select: none;
+  color: white;
+  filter: drop-shadow(0rem 0rem 0.5rem #444444);
+  font-size: 28px;
+}
+
+.sticker-locked {
+  user-select: none;
+  color: white;
+  filter: drop-shadow(0rem 0rem 0.5rem #444444);
+  font-size: 30px;
+}
+
+@media(max-width: 900px) {
+  .sticker-title {
+    font-size: 22px;
+  }
+  .sticker-locked {
+    font-size: 24px;
+  }
+  .sticker-loader {
+    border: 6px solid #f3f3f3;
+    border-top: 6px solid #3498db;
+    width: 25px;
+    height: 25px;
+  }
+}
+
 @media(max-width: 450px) {
-  .sticker-circle {
-    div {
-      font-size: 14px;
-    }
+  .sticker-title {
+    font-size: 18px;
+  }
+  .sticker-locked {
+    font-size: 20px;
   }
   .sticker-loader {
     border: 6px solid #f3f3f3;

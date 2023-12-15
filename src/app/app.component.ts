@@ -5,11 +5,14 @@ import {Sticker} from "./sticker/Sticker";
 import {StickerComponent} from "./sticker/sticker.component";
 import {Videos} from "./Videos";
 import {SnowComponent} from "./snow/snow.component";
+import {Data} from "./Data";
+import {CounterComponent} from "./counter/counter.component";
 
+//TODO БРАТЬ ДАТУ ИЗ СЕРВЕРА ЧТОБЫ НЕ ХАКНУЛИ
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, StickerComponent, SnowComponent],
+  imports: [CommonModule, RouterOutlet, StickerComponent, SnowComponent, CounterComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
@@ -21,13 +24,19 @@ export class AppComponent implements AfterViewInit {
   @ViewChildren('stickers') components?: QueryList<StickerComponent>;
 
   title = '🎄🎅🏼НОВОГОДНИЙ ПУКИШ КАЛЕНДАРЬ💩💨';
-  year = new Date().getFullYear();
+  shakeAnim = false;
+
+  isLoaded = false;
+  isCounter = false;
 
   stickers: Sticker[] = []
   stickersOpened: number[] = [];
 
-  isLoaded = false;
   loadCounter = 0;
+  newYearCounter = '...';
+
+  loadTextAll: string[] = []
+  loadText: string = '';
 
   readonly daysCount = AppComponent.DAYS_COUNT;
   readonly decemberMonth = 12;
@@ -37,6 +46,27 @@ export class AppComponent implements AfterViewInit {
   }
 
   constructor() {
+    let date = new Date();
+
+    if (date.getMonth() <= 0 && date.getDate() <= 1) {
+      this.isCounter = true;
+      return;
+    }
+
+    let nextYear = date.getFullYear() + 1;
+    let endDate: any = new Date(nextYear, 0, 1, 0, 0, 0, 0);
+    let timer = (endDate as any) - (date as any);
+    let daysLeft = Math.floor(timer / (1000 * 60 * 60 * 24));
+
+    this.newYearCounter = 'до ' + nextYear + 'г ' + daysLeft + 'д';
+
+    this.loadTextAll = Data.loadText;
+    this.loadText = this.loadTextAll[Math.floor(Math.random() * this.loadTextAll.length)];
+
+    this.initStickers();
+  }
+
+  private initStickers() {
     for (let i = 0; i < AppComponent.DAYS_COUNT; i++) {
       let dayNumber: number = i + 1;
 
@@ -58,7 +88,7 @@ export class AppComponent implements AfterViewInit {
 
       let sticker = new Sticker(
         dayNumber,
-        'ДЕНЬ ' + dayStick,
+        '' + dayStick,
         'linear-gradient(-45deg, ' + backColor1 + ', ' + backColor2 + ' )',
         videoUrl,
         stickLocked
@@ -89,14 +119,25 @@ export class AppComponent implements AfterViewInit {
       return
     }
 
+    this.shakeAnim = true;
+    setTimeout(() => this.shakeAnim = false, 500);
+
     let randOpened = Math.floor(Math.random() * this.stickersOpened.length);
 
     let stickIndex = this.stickersOpened[randOpened];
     let stick = this.components?.toArray()[stickIndex];
 
     stick?.peelOff();
-    stick?.toggleVideo();
+    stick?.playVideo();
 
     this.stickersOpened.splice(randOpened, 1)
+  }
+
+  showCounter() {
+    this.isCounter = true;
+  }
+
+  toAuthor() {
+    window.open("https://t.me/toxin_studio", "_blank");
   }
 }
