@@ -71,15 +71,18 @@
   align-items: center;
   color: whitesmoke;
 
+  div {
+    user-select: none;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    cursor: pointer;
+  }
+
   .rand {
     filter: drop-shadow(0rem 0rem 0.05rem #313131);
-    cursor: pointer;
-    user-select: none;
     font-size: 28px;
   }
 
   .author {
-    cursor: pointer;
     position: absolute;
     left: 15px;
     font-size: 20px;
@@ -87,7 +90,6 @@
   }
 
   .year {
-    cursor: pointer;
     position: absolute;
     right: 15px;
     font-size: 20px;
@@ -136,16 +138,15 @@
 
 @media(max-width: 1500px) {
   .sticker {
-    flex: 1 1 200px;
+    flex: 1 1 180px;
   }
 }
 
 @media(max-width: 1200px) {
   .sticker {
-    flex: 1 1 180px;
+    flex: 1 1 150px;
   }
 }
-
 
 @media(max-width: 900px) {
   .sticker {
@@ -156,18 +157,36 @@
   }
 }
 
-@media(max-width: 700px) {
+@media(max-width: 760px) {
+  .sticker {
+    flex: 1 1 130px;
+  }
+  .title {
+    font-size: 24px;
+  }
+}
+
+@media(max-width: 660px) {
   .sticker {
     flex: 1 1 120px;
+  }
+  .title {
+    font-size: 24px;
+  }
+}
+
+@media(max-width: 610px) {
+  .sticker {
+    flex: 1 1 110px;
   }
   .title {
     font-size: 20px;
   }
 }
 
-@media(max-width: 500px) {
+@media(max-width: 490px) {
   .sticker {
-    flex: 1 1 110px;
+    flex: 1 1 100px;
   }
   .title {
     font-size: 18px;
