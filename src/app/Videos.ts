@@ -23,7 +23,7 @@ export class Videos {
     /*22*/"/v0/b/advent-calendar-4a616.appspot.com/o/sticker_22.webm?alt=media&token=6aea199d-748f-46bb-95e3-b8872a1c10db",
     /*23*/"/v0/b/advent-calendar-4a616.appspot.com/o/sticker_23.webm?alt=media&token=68c33b9f-b6f6-4c4d-bf48-797b39e66c83",
     /*24*/"/v0/b/advent-calendar-4a616.appspot.com/o/sticker_24.webm?alt=media&token=b0ca43c8-69f9-4100-8b41-4ce153096fbd",
-    /*25*/"",
+    /*25*/"/v0/b/advent-calendar-4a616.appspot.com/o/sitcker_25.webm?alt=media&token=3ba5ddbf-7d82-4045-97d9-37999d102acb",
     /*26*/"",
     /*27*/"",
     /*28*/"",
